@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct User {
+struct User: Encodable {
     var name: String
     var password: String
 }

@@ -25,6 +25,7 @@
 		3A86F0DF2B93820A00310C6E /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0DE2B93820A00310C6E /* EyeView.swift */; };
 		3A86F0E12B93962100310C6E /* LoginAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E02B93962100310C6E /* LoginAlert.swift */; };
 		3A86F0E42B939B7300310C6E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E32B939B7300310C6E /* User.swift */; };
+		3A86F0E72B939DE500310C6E /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E62B939DE500310C6E /* NetworkLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		3A86F0DE2B93820A00310C6E /* EyeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
 		3A86F0E02B93962100310C6E /* LoginAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlert.swift; sourceTree = "<group>"; };
 		3A86F0E32B939B7300310C6E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A86F0E62B939DE500310C6E /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +82,6 @@
 		3A17A6B12B90F71700C3D7A8 /* AuthApp */ = {
 			isa = PBXGroup;
 			children = (
-				3A86F0E22B939B6200310C6E /* Model */,
 				3A86F0DD2B9381E800310C6E /* SharedViews */,
 				3A17A6CA2B90FAFB00C3D7A8 /* Login */,
 				3A17A6C92B90F84500C3D7A8 /* App */,
@@ -88,6 +89,8 @@
 				3A17A6C02B90F71A00C3D7A8 /* LaunchScreen.storyboard */,
 				3A17A6BB2B90F71700C3D7A8 /* AuthApp.xcdatamodeld */,
 				3A17A6D02B91041300C3D7A8 /* ExtraContent */,
+				3A86F0E22B939B6200310C6E /* Model */,
+				3A86F0E52B939DCD00310C6E /* Services */,
 			);
 			path = AuthApp;
 			sourceTree = "<group>";
@@ -149,6 +152,14 @@
 				3A86F0E32B939B7300310C6E /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3A86F0E52B939DCD00310C6E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3A86F0E62B939DE500310C6E /* NetworkLayer.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 				3A86F0E42B939B7300310C6E /* User.swift in Sources */,
 				3A17A6B52B90F71700C3D7A8 /* SceneDelegate.swift in Sources */,
 				3A17A6CC2B90FB2D00C3D7A8 /* LoginViewModel.swift in Sources */,
+				3A86F0E72B939DE500310C6E /* NetworkLayer.swift in Sources */,
 				3A17A6BD2B90F71700C3D7A8 /* AuthApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
