@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+protocol LoginViewModelProtocol {
+
+}
+
+
+class LoginViewModel: LoginViewModelProtocol {
+ 
+    
+    
+
+    
+    
+}

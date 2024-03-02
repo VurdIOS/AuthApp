@@ -27,8 +27,15 @@ class LoginContentView: UIView {
     
     private let loginTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введи туда-сюда логин"
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.font = UIFont(name: "MPLUS1p-Medium", size: 16)!
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Введи туда-сюда логин",
+            attributes: [
+                NSAttributedString.Key.font: UIFont(name: "MPLUS1p-Medium", size: 16)!,
+                NSAttributedString.Key.foregroundColor: UIColor.gray
+            ]
+        )
         
         return textField
     }()
@@ -37,11 +44,22 @@ class LoginContentView: UIView {
         let textField = UITextField()
         textField.placeholder = "Пароль (тоже введи)"
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
+        textField.font = UIFont(name: "MPLUS1p-Medium", size: 16)!
+        textField.isSecureTextEntry = true
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Пароль (тоже введи)",
+            attributes: [
+                NSAttributedString.Key.font: UIFont(name: "MPLUS1p-Medium", size: 16)!,
+                NSAttributedString.Key.foregroundColor: UIColor.gray
+            ]
+        )
+
         return textField
     }()
     
-    private let loginButton: UIButton = {
+     let eyeView = EyeView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    
+     let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Войти", for: .normal)
         button.backgroundColor = .black
@@ -62,14 +80,41 @@ class LoginContentView: UIView {
         return button
     }()
 
-    init() {
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupUI()
+        setupTextFields()
+        setupButtonsTarget()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupTextFields() {
+        let textFieldsHeight = passwordTextField.frame.height
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textFieldsHeight))
+        let paddingView2 = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textFieldsHeight))
+
+        loginTextField.leftView = paddingView
+        loginTextField.leftViewMode = .always
+        
+        passwordTextField.leftView = paddingView2
+        passwordTextField.leftViewMode = .always
+        
+        passwordTextField.rightView = eyeView
+        passwordTextField.rightViewMode = .always
+
+    }
+    
+    private func setupButtonsTarget() {
+        eyeView.eyeButton.addTarget(nil, action: #selector(eyeButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func eyeButtonTapped() {
+        passwordTextField.isSecureTextEntry.toggle()
+    }
+    
     
     private func setupUI() {
         addSubview(mainImage)

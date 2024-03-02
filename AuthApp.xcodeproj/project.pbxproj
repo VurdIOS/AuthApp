@@ -22,6 +22,9 @@
 		3A17A6EE2B91069300C3D7A8 /* MPLUS1p-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A17A6E72B91069300C3D7A8 /* MPLUS1p-Medium.ttf */; };
 		3A17A6EF2B91069300C3D7A8 /* MPLUS1p-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A17A6E82B91069300C3D7A8 /* MPLUS1p-Bold.ttf */; };
 		3A17A6F02B91069300C3D7A8 /* MPLUS1p-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A17A6E92B91069300C3D7A8 /* MPLUS1p-Regular.ttf */; };
+		3A86F0DF2B93820A00310C6E /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0DE2B93820A00310C6E /* EyeView.swift */; };
+		3A86F0E12B93962100310C6E /* LoginAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E02B93962100310C6E /* LoginAlert.swift */; };
+		3A86F0E42B939B7300310C6E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E32B939B7300310C6E /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		3A17A6E72B91069300C3D7A8 /* MPLUS1p-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Medium.ttf"; sourceTree = "<group>"; };
 		3A17A6E82B91069300C3D7A8 /* MPLUS1p-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Bold.ttf"; sourceTree = "<group>"; };
 		3A17A6E92B91069300C3D7A8 /* MPLUS1p-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Regular.ttf"; sourceTree = "<group>"; };
+		3A86F0DE2B93820A00310C6E /* EyeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
+		3A86F0E02B93962100310C6E /* LoginAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlert.swift; sourceTree = "<group>"; };
+		3A86F0E32B939B7300310C6E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,8 @@
 		3A17A6B12B90F71700C3D7A8 /* AuthApp */ = {
 			isa = PBXGroup;
 			children = (
+				3A86F0E22B939B6200310C6E /* Model */,
+				3A86F0DD2B9381E800310C6E /* SharedViews */,
 				3A17A6CA2B90FAFB00C3D7A8 /* Login */,
 				3A17A6C92B90F84500C3D7A8 /* App */,
 				3A17A6BE2B90F71A00C3D7A8 /* Assets.xcassets */,
@@ -124,6 +132,23 @@
 				3A17A6E32B91069300C3D7A8 /* MPLUS1p-Thin.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		3A86F0DD2B9381E800310C6E /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				3A86F0DE2B93820A00310C6E /* EyeView.swift */,
+				3A86F0E02B93962100310C6E /* LoginAlert.swift */,
+			);
+			path = SharedViews;
+			sourceTree = "<group>";
+		};
+		3A86F0E22B939B6200310C6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A86F0E32B939B7300310C6E /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,9 +228,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A86F0DF2B93820A00310C6E /* EyeView.swift in Sources */,
 				3A17A6CF2B90FE5700C3D7A8 /* LoginContentView.swift in Sources */,
 				3A17A6B72B90F71700C3D7A8 /* LoginViewController.swift in Sources */,
 				3A17A6B32B90F71700C3D7A8 /* AppDelegate.swift in Sources */,
+				3A86F0E12B93962100310C6E /* LoginAlert.swift in Sources */,
+				3A86F0E42B939B7300310C6E /* User.swift in Sources */,
 				3A17A6B52B90F71700C3D7A8 /* SceneDelegate.swift in Sources */,
 				3A17A6CC2B90FB2D00C3D7A8 /* LoginViewModel.swift in Sources */,
 				3A17A6BD2B90F71700C3D7A8 /* AuthApp.xcdatamodeld in Sources */,
