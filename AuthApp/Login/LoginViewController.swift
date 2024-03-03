@@ -9,7 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private var ContentView: LoginContentView!
+    private var ContentView =  LoginContentView()
+    
+    var viewModel: LoginViewModelProtocol
     
     
     override func viewDidLoad() {
@@ -18,8 +20,19 @@ class LoginViewController: UIViewController {
         setupButtonsTarget()
     }
     
+    init(viewModel: LoginViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
     private func setupUI() {
-        ContentView = LoginContentView()
         ContentView.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.addSubview(ContentView)
@@ -34,11 +47,17 @@ class LoginViewController: UIViewController {
     
     private func setupButtonsTarget() {
         ContentView.loginButton.addTarget(nil, action: #selector(loginButtonTapped), for: .touchUpInside)
+        ContentView.signInButton.addTarget(nil, action: #selector(signInButtonTapped), for: .touchUpInside)
     }
 
     @objc func loginButtonTapped() {
         let banner = NotificationBanner()
         banner.show(in: ContentView, duration: 1.0)
+    }
+    
+    @objc func signInButtonTapped() {
+        let vc = RegistrationView(viewModel: viewModel.getViewModelToRegistrationView())
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

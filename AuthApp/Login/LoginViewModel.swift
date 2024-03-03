@@ -8,11 +8,15 @@
 import Foundation
 
 protocol LoginViewModelProtocol {
-
+    func getViewModelToRegistrationView() -> RegistrationViewModelProtocol
 }
 
 
 class LoginViewModel: LoginViewModelProtocol {
+    func getViewModelToRegistrationView() -> RegistrationViewModelProtocol {
+        RegistrationViewModel()
+    }
+    
  
     
     

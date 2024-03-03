@@ -53,13 +53,13 @@ class LoginContentView: UIView {
                 NSAttributedString.Key.foregroundColor: UIColor.gray
             ]
         )
-
+        
         return textField
     }()
     
-     let eyeView = EyeView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    let eyeView = EyeView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
-     let loginButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Войти", for: .normal)
         button.backgroundColor = .black
@@ -70,7 +70,7 @@ class LoginContentView: UIView {
         
     }()
     
-    private let signInButton: UIButton = {
+    let signInButton: UIButton = {
         let button = UIButton()
         button.setTitle("У меня еще нет аккаунта", for: .normal)
         button.backgroundColor = .clear
@@ -79,7 +79,7 @@ class LoginContentView: UIView {
         
         return button
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -95,7 +95,7 @@ class LoginContentView: UIView {
         let textFieldsHeight = passwordTextField.frame.height
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textFieldsHeight))
         let paddingView2 = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textFieldsHeight))
-
+        
         loginTextField.leftView = paddingView
         loginTextField.leftViewMode = .always
         
@@ -104,7 +104,7 @@ class LoginContentView: UIView {
         
         passwordTextField.rightView = eyeView
         passwordTextField.rightViewMode = .always
-
+        
     }
     
     private func setupButtonsTarget() {
