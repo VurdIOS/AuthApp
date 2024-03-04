@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private var ContentView =  LoginContentView()
+    private lazy var contentView =  LoginContentView()
     
     var viewModel: LoginViewModelProtocol
     
@@ -19,6 +19,10 @@ class LoginViewController: UIViewController {
         setupUI()
         setupButtonsTarget()
     }
+//    Это не работает, вьюшка смещена, не знаю как настроить, спросить на созвоне
+//    override func loadView() {
+//        view = ContentView
+//    }
     
     init(viewModel: LoginViewModelProtocol) {
         self.viewModel = viewModel
@@ -33,30 +37,30 @@ class LoginViewController: UIViewController {
     
     
     private func setupUI() {
-        ContentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.addSubview(ContentView)
+        view.addSubview(contentView)
   
         NSLayoutConstraint.activate([
-            ContentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            ContentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            ContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            ContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
     private func setupButtonsTarget() {
-        ContentView.loginButton.addTarget(nil, action: #selector(loginButtonTapped), for: .touchUpInside)
-        ContentView.signInButton.addTarget(nil, action: #selector(signInButtonTapped), for: .touchUpInside)
+        contentView.loginButton.addTarget(nil, action: #selector(loginButtonTapped), for: .touchUpInside)
+        contentView.signInButton.addTarget(nil, action: #selector(signInButtonTapped), for: .touchUpInside)
     }
 
     @objc func loginButtonTapped() {
         let banner = NotificationBanner()
-        banner.show(in: ContentView, duration: 1.0)
+        banner.show(in: contentView, duration: 1.0)
     }
     
     @objc func signInButtonTapped() {
-        let vc = RegistrationView(viewModel: viewModel.getViewModelToRegistrationView())
+        let vc = RegistrationViewController(viewModel: viewModel.getViewModelToRegistrationView())
         navigationController?.pushViewController(vc, animated: true)
     }
 

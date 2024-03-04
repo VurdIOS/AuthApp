@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum ValidState {
+    case ok
+    case neutral
+    case bad
+}
+
 protocol RegistrationContentViewDelegate: AnyObject {
     func check(password: String)
 }
@@ -165,7 +171,40 @@ class RegistrationContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupCheckValidLabels(withStates: (ValidState, ValidState, ValidState, ValidState)) {
+        let (passwordCheckLenthLabelState,
+             passwordCheckRegistrLabelState,
+             passwordCheckContainIntLabelState,
+             passwordCheckContainSpecSymbolLabelState) = withStates
+        
+        setup(validLabel: passwordCheckLenthLabel, withState: passwordCheckLenthLabelState)
+        setup(validLabel: passwordCheckRegistrLabel, withState: passwordCheckRegistrLabelState)
+        setup(validLabel: passwordCheckContainIntLabel, withState: passwordCheckContainIntLabelState)
+        setup(validLabel: passwordCheckContainSpecSymbolLabel, withState: passwordCheckContainSpecSymbolLabelState)
+    }
     
+
+    #warning("Придумать логику при которой будут bad values приходить при нажатии на кнопку")
+    private func setup(validLabel: UILabel, withState: ValidState) {
+        switch withState {
+        case .ok:
+            if validLabel.text?.last != "✅" {
+                validLabel.text?.append("✅")
+                validLabel.textColor = .green
+            }
+    
+        case .neutral:
+            if validLabel.text?.last == "✅" || validLabel.text?.last == "❌" {
+                validLabel.text?.removeLast()
+                validLabel.textColor = .gray
+            }
+        case .bad:
+            if validLabel.text?.last != "❌" {
+                validLabel.text?.append("❌")
+                validLabel.textColor = .red
+            }
+        }
+    }
     
     private func setupUI() {
         addSubview(titleLabel)

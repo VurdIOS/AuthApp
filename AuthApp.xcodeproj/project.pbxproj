@@ -22,7 +22,7 @@
 		3A17A6EE2B91069300C3D7A8 /* MPLUS1p-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A17A6E72B91069300C3D7A8 /* MPLUS1p-Medium.ttf */; };
 		3A17A6EF2B91069300C3D7A8 /* MPLUS1p-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A17A6E82B91069300C3D7A8 /* MPLUS1p-Bold.ttf */; };
 		3A17A6F02B91069300C3D7A8 /* MPLUS1p-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A17A6E92B91069300C3D7A8 /* MPLUS1p-Regular.ttf */; };
-		3A54A7C62B947E470053B275 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54A7C52B947E470053B275 /* RegistrationView.swift */; };
+		3A54A7C62B947E470053B275 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54A7C52B947E470053B275 /* RegistrationViewController.swift */; };
 		3A54A7C82B947E5C0053B275 /* RegistrationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54A7C72B947E5C0053B275 /* RegistrationContentView.swift */; };
 		3A54A7CA2B947E6B0053B275 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54A7C92B947E6B0053B275 /* RegistrationViewModel.swift */; };
 		3A86F0DF2B93820A00310C6E /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0DE2B93820A00310C6E /* EyeView.swift */; };
@@ -49,7 +49,7 @@
 		3A17A6E72B91069300C3D7A8 /* MPLUS1p-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Medium.ttf"; sourceTree = "<group>"; };
 		3A17A6E82B91069300C3D7A8 /* MPLUS1p-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Bold.ttf"; sourceTree = "<group>"; };
 		3A17A6E92B91069300C3D7A8 /* MPLUS1p-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Regular.ttf"; sourceTree = "<group>"; };
-		3A54A7C52B947E470053B275 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		3A54A7C52B947E470053B275 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		3A54A7C72B947E5C0053B275 /* RegistrationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContentView.swift; sourceTree = "<group>"; };
 		3A54A7C92B947E6B0053B275 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		3A86F0DE2B93820A00310C6E /* EyeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		3A54A7C42B947DCE0053B275 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				3A54A7C52B947E470053B275 /* RegistrationView.swift */,
+				3A54A7C52B947E470053B275 /* RegistrationViewController.swift */,
 				3A54A7C72B947E5C0053B275 /* RegistrationContentView.swift */,
 				3A54A7C92B947E6B0053B275 /* RegistrationViewModel.swift */,
 			);
@@ -256,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A54A7C62B947E470053B275 /* RegistrationView.swift in Sources */,
+				3A54A7C62B947E470053B275 /* RegistrationViewController.swift in Sources */,
 				3A86F0DF2B93820A00310C6E /* EyeView.swift in Sources */,
 				3A17A6CF2B90FE5700C3D7A8 /* LoginContentView.swift in Sources */,
 				3A17A6B72B90F71700C3D7A8 /* LoginViewController.swift in Sources */,
