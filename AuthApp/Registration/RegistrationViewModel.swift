@@ -9,11 +9,16 @@ import Foundation
 
 protocol RegistrationViewModelProtocol {
     func check(password: String) -> (passwordCheckLenthLabel: ValidState, passwordCheckRegistrLabel: ValidState, passwordCheckContainIntLabel: ValidState, passwordCheckContainSpecSymbolLabel: ValidState)
+    func getViewModelMailSendViewController(withMail: String) -> MailSendViewModelProtocol
 
 }
 
 
 class RegistrationViewModel: RegistrationViewModelProtocol {
+    func getViewModelMailSendViewController(withMail: String) -> MailSendViewModelProtocol {
+        MailSendViewModel(mail: withMail)
+    }
+    
     
     func check(password: String) -> (passwordCheckLenthLabel: ValidState, passwordCheckRegistrLabel: ValidState, passwordCheckContainIntLabel: ValidState, passwordCheckContainSpecSymbolLabel: ValidState) {
         let CheckLenthPattern = "^.{8,15}$"

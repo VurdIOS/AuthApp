@@ -15,6 +15,7 @@ enum ValidState {
 
 protocol RegistrationContentViewDelegate: AnyObject {
     func check(password: String)
+    func nextButtonTapped(mail: String)
 }
 
 class RegistrationContentView: UIView {
@@ -289,6 +290,7 @@ class RegistrationContentView: UIView {
         passwordTextField.addTarget(self, action: #selector(passwordChanged), for: .editingChanged)
         passwordEyeView.eyeButton.addTarget(nil, action: #selector(passwordEyeViewTapped), for: .touchUpInside)
         repeatPasswordEyeView.eyeButton.addTarget(nil, action: #selector(repeatPasswordEyeViewTapped), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     
     @objc func passwordEyeViewTapped() {
@@ -303,6 +305,10 @@ class RegistrationContentView: UIView {
         if let password = textField.text {
             delegate?.check(password: password)
         }
+    }
+    //TODO: Убрать force unwrap
+    @objc func nextButtonTapped() {
+        delegate?.nextButtonTapped(mail: mailTextField.text!)
     }
     
 }

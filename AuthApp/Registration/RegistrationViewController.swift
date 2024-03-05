@@ -57,6 +57,11 @@ extension RegistrationViewController: RegistrationContentViewDelegate {
 
     }
     
+    func nextButtonTapped(mail: String) {
+        let viewController = MailSendViewController(viewModel: viewModel.getViewModelMailSendViewController(withMail: mail))
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     
     
 }
