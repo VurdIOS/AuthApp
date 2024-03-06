@@ -19,10 +19,10 @@ class LoginViewController: UIViewController {
         setupUI()
         setupButtonsTarget()
     }
-//    Это не работает, вьюшка смещена, не знаю как настроить, спросить на созвоне
-//    override func loadView() {
-//        view = ContentView
-//    }
+    //    Это не работает, вьюшка смещена, не знаю как настроить, спросить на созвоне
+    //    override func loadView() {
+    //        view = ContentView
+    //    }
     
     init(viewModel: LoginViewModelProtocol) {
         self.viewModel = viewModel
@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.addSubview(contentView)
-  
+        
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -53,16 +53,32 @@ class LoginViewController: UIViewController {
         contentView.loginButton.addTarget(nil, action: #selector(loginButtonTapped), for: .touchUpInside)
         contentView.signInButton.addTarget(nil, action: #selector(signInButtonTapped), for: .touchUpInside)
     }
-
-    @objc func loginButtonTapped() {
+    private func showBanner() {
         let banner = NotificationBanner()
         banner.show(in: contentView, duration: 1.0)
     }
+    
+    @objc func loginButtonTapped() {
+        guard let login = contentView.loginTextField.text else { return }
+        guard let password = contentView.passwordTextField.text else { return }
+        let userCredentials = UserCredentials(username: login, email: nil, password: password)
+        
+        viewModel.loginButtonTapped(user: userCredentials) { [weak self] success, errorMessage in
+            if success {
+                print("перешли")
+            } else if let message = errorMessage {
+                // Показать сообщение об ошибке
+                self!.showBanner()
+            }
+        }
+    }
+
+    
     
     @objc func signInButtonTapped() {
         let vc = RegistrationViewController(viewModel: viewModel.getViewModelToRegistrationView())
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }
 

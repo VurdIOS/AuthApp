@@ -25,9 +25,11 @@
 		3A54A7C62B947E470053B275 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54A7C52B947E470053B275 /* RegistrationViewController.swift */; };
 		3A54A7C82B947E5C0053B275 /* RegistrationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54A7C72B947E5C0053B275 /* RegistrationContentView.swift */; };
 		3A54A7CA2B947E6B0053B275 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A54A7C92B947E6B0053B275 /* RegistrationViewModel.swift */; };
+		3A57F28E2B98DB81003289AE /* AuthenticationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57F28D2B98DB81003289AE /* AuthenticationResponse.swift */; };
+		3A57F2902B98DB93003289AE /* VerificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57F28F2B98DB93003289AE /* VerificationRequest.swift */; };
 		3A86F0DF2B93820A00310C6E /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0DE2B93820A00310C6E /* EyeView.swift */; };
 		3A86F0E12B93962100310C6E /* LoginAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E02B93962100310C6E /* LoginAlert.swift */; };
-		3A86F0E42B939B7300310C6E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E32B939B7300310C6E /* User.swift */; };
+		3A86F0E42B939B7300310C6E /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E32B939B7300310C6E /* UserCredentials.swift */; };
 		3A86F0E72B939DE500310C6E /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A86F0E62B939DE500310C6E /* NetworkLayer.swift */; };
 		3AEB49EA2B9732F1000D4B83 /* MailSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEB49E92B9732F1000D4B83 /* MailSendViewController.swift */; };
 		3AEB49EC2B973307000D4B83 /* MailSendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEB49EB2B973307000D4B83 /* MailSendViewModel.swift */; };
@@ -55,9 +57,11 @@
 		3A54A7C52B947E470053B275 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		3A54A7C72B947E5C0053B275 /* RegistrationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationContentView.swift; sourceTree = "<group>"; };
 		3A54A7C92B947E6B0053B275 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		3A57F28D2B98DB81003289AE /* AuthenticationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResponse.swift; sourceTree = "<group>"; };
+		3A57F28F2B98DB93003289AE /* VerificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationRequest.swift; sourceTree = "<group>"; };
 		3A86F0DE2B93820A00310C6E /* EyeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
 		3A86F0E02B93962100310C6E /* LoginAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlert.swift; sourceTree = "<group>"; };
-		3A86F0E32B939B7300310C6E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A86F0E32B939B7300310C6E /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
 		3A86F0E62B939DE500310C6E /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		3AEB49E92B9732F1000D4B83 /* MailSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailSendViewController.swift; sourceTree = "<group>"; };
 		3AEB49EB2B973307000D4B83 /* MailSendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailSendViewModel.swift; sourceTree = "<group>"; };
@@ -173,7 +177,9 @@
 		3A86F0E22B939B6200310C6E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3A86F0E32B939B7300310C6E /* User.swift */,
+				3A86F0E32B939B7300310C6E /* UserCredentials.swift */,
+				3A57F28D2B98DB81003289AE /* AuthenticationResponse.swift */,
+				3A57F28F2B98DB93003289AE /* VerificationRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,7 +287,9 @@
 				3A17A6B32B90F71700C3D7A8 /* AppDelegate.swift in Sources */,
 				3A86F0E12B93962100310C6E /* LoginAlert.swift in Sources */,
 				3AEB49EE2B973448000D4B83 /* MailSendContentView.swift in Sources */,
-				3A86F0E42B939B7300310C6E /* User.swift in Sources */,
+				3A57F28E2B98DB81003289AE /* AuthenticationResponse.swift in Sources */,
+				3A86F0E42B939B7300310C6E /* UserCredentials.swift in Sources */,
+				3A57F2902B98DB93003289AE /* VerificationRequest.swift in Sources */,
 				3A17A6B52B90F71700C3D7A8 /* SceneDelegate.swift in Sources */,
 				3A17A6CC2B90FB2D00C3D7A8 /* LoginViewModel.swift in Sources */,
 				3A54A7CA2B947E6B0053B275 /* RegistrationViewModel.swift in Sources */,

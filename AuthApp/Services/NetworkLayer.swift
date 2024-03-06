@@ -36,50 +36,99 @@ enum NetworkError: Error {
 }
 
 class NetworkLayer {
-    static let shared = NetworkLayer() // Singleton instance
+    private let baseURL = "http://yourserver.com/api/v1/auth"
     
-    private let baseURL = "https://example.com/api"
+    static let shared = NetworkLayer()
     
-    private init() {}
-    
-    func createUser(_ user: User, completion: @escaping (Result<Void, NetworkError>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/users") else {
-            completion(.failure(.invalidURL))
+    private init () {}
+
+    func register(userCredentials: UserCredentials, completion: @escaping (Result<AuthenticationResponse, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/register") else {
+            completion(.failure(NetworkError.invalidURL))
             return
         }
-        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let jsonData = try? JSONEncoder().encode(user) else {
-            completion(.failure(.encodingError))
+        do {
+            let jsonData = try JSONEncoder().encode(userCredentials)
+            request.httpBody = jsonData
+        } catch {
+            completion(.failure(NetworkError.encodingError))
             return
         }
         
-        request.httpBody = jsonData
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    completion(.failure(.serverError(error.localizedDescription)))
-                    return
-                }
-                
-                guard let httpResponse = response as? HTTPURLResponse,
-                      (200...299).contains(httpResponse.statusCode) else {
-                    completion(.failure(.badResponse))
-                    return
-                }
-                
-                guard data != nil else {
-                    completion(.failure(.dataNotFound))
-                    return
-                }
-                
-                completion(.success(()))
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                completion(.failure(NetworkError.dataNotFound))
+                return
             }
+                
+            guard error == nil else {
+                completion(.failure(NetworkError.serverError(error?.localizedDescription ?? "Server Error")))
+                return
+            }
+            
+            do {
+                let authResponse = try JSONDecoder().decode(AuthenticationResponse.self, from: data)
+                completion(.success(authResponse))
+            } catch {
+                completion(.failure(NetworkError.badResponse))
+            }
+        }.resume()
+    }
+    //Доработать
+    func authenticate(userCredentials: UserCredentials, completion: @escaping (Result<AuthenticationResponse, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/authenticate") else {
+            completion(.failure(NetworkError.invalidURL))
+            return
         }
-        task.resume()
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(userCredentials)
+            request.httpBody = jsonData
+        } catch {
+            completion(.failure(NetworkError.encodingError))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                completion(.failure(NetworkError.dataNotFound))
+                return
+            }
+                
+            guard error == nil else {
+                completion(.failure(NetworkError.serverError(error?.localizedDescription ?? "Server Error")))
+                return
+            }
+            
+            do {
+                let authResponse = try JSONDecoder().decode(AuthenticationResponse.self, from: data)
+                completion(.success(authResponse))
+            } catch {
+                completion(.failure(NetworkError.badResponse))
+            }
+        }.resume()
+    }
+    
+    func verify(token: String, completion: @escaping (Result<String, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/verify?token=\(token)") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            
+            let message = String(data: data, encoding: .utf8) ?? "Verification failed"
+            completion(.success(message))
+        }.resume()
     }
 }

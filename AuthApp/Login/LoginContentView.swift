@@ -25,7 +25,7 @@ class LoginContentView: UIView {
         return label
     }()
     
-    private let loginTextField: UITextField = {
+     let loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "MPLUS1p-Medium", size: 16)!
@@ -40,7 +40,7 @@ class LoginContentView: UIView {
         return textField
     }()
     
-    private let passwordTextField: UITextField = {
+     let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Пароль (тоже введи)"
         textField.translatesAutoresizingMaskIntoConstraints = false

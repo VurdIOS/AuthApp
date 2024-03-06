@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct User: Encodable {
-    var name: String
-    var password: String
+struct UserCredentials: Encodable {
+    let username: String
+    let email: String?
+    let password: String
 }
