@@ -10,6 +10,7 @@ import Foundation
 protocol RegistrationViewModelProtocol {
     func check(password: String) -> (passwordCheckLenthLabel: ValidState, passwordCheckRegistrLabel: ValidState, passwordCheckContainIntLabel: ValidState, passwordCheckContainSpecSymbolLabel: ValidState)
     func getViewModelMailSendViewController(withMail: String) -> MailSendViewModelProtocol
+    func nextButtonTapped(user: UserCredentials, completion: @escaping (Bool) -> Void)
 
 }
 
@@ -51,5 +52,19 @@ class RegistrationViewModel: RegistrationViewModelProtocol {
             return .bad
         }
         return .neutral
+    }
+    
+    func nextButtonTapped(user: UserCredentials, completion: @escaping (Bool) -> Void) {
+        NetworkLayer.shared.register(userCredentials: user ) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let authResponse):
+                    completion(true)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    completion(false)
+                }
+            }
+        }
     }
 }

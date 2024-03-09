@@ -57,8 +57,11 @@ extension RegistrationViewController: RegistrationContentViewDelegate {
 
     }
     
-    func nextButtonTapped(mail: String) {
-        let viewController = MailSendViewController(viewModel: viewModel.getViewModelMailSendViewController(withMail: mail))
+    func nextButtonTapped(user: UserCredentials) {
+        viewModel.nextButtonTapped(user: user) { result in
+            print("Не получилось зарегать")
+        }
+        let viewController = MailSendViewController(viewModel: viewModel.getViewModelMailSendViewController(withMail: user.email!))
         navigationController?.pushViewController(viewController, animated: true)
     }
     

@@ -30,26 +30,29 @@ struct API {
 enum NetworkError: Error {
     case invalidURL
     case encodingError
-    case badResponse
     case dataNotFound
+    case badResponse
     case serverError(String)
 }
 
 class NetworkLayer {
-    private let baseURL = "http://yourserver.com/api/v1/auth"
+    private let baseURL = "http://134.209.238.169/api/v1/auth"
     
     static let shared = NetworkLayer()
     
     private init () {}
 
     func register(userCredentials: UserCredentials, completion: @escaping (Result<AuthenticationResponse, Error>) -> Void) {
+        print("Начали регистрацию")
         guard let url = URL(string: "\(baseURL)/register") else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
+        print("Ссылка есть")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        print("Ссылка ес")
         
         do {
             let jsonData = try JSONEncoder().encode(userCredentials)
@@ -62,14 +65,17 @@ class NetworkLayer {
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 completion(.failure(NetworkError.dataNotFound))
+                print("не пришла дата с бэка")
                 return
             }
-                
+            print("пришла дата с бэка")
             guard error == nil else {
                 completion(.failure(NetworkError.serverError(error?.localizedDescription ?? "Server Error")))
                 return
             }
-            
+            print("ошибок нет")
+            print(response)
+            print(data)
             do {
                 let authResponse = try JSONDecoder().decode(AuthenticationResponse.self, from: data)
                 completion(.success(authResponse))
@@ -80,7 +86,8 @@ class NetworkLayer {
     }
     //Доработать
     func authenticate(userCredentials: UserCredentials, completion: @escaping (Result<AuthenticationResponse, Error>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/authenticate") else {
+        print("Начали выполнять")
+        guard let url = URL(string: "http://134.209.238.169/api/v1/auth/authenticate") else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
@@ -101,7 +108,7 @@ class NetworkLayer {
                 completion(.failure(NetworkError.dataNotFound))
                 return
             }
-                
+                print(response)
             guard error == nil else {
                 completion(.failure(NetworkError.serverError(error?.localizedDescription ?? "Server Error")))
                 return

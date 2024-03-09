@@ -15,7 +15,7 @@ enum ValidState {
 
 protocol RegistrationContentViewDelegate: AnyObject {
     func check(password: String)
-    func nextButtonTapped(mail: String)
+    func nextButtonTapped(user: UserCredentials)
 }
 
 class RegistrationContentView: UIView {
@@ -36,6 +36,7 @@ class RegistrationContentView: UIView {
     
     private let mailTextField: UITextField = {
         let textField = UITextField()
+        textField.text = "kamalios@mail.ru"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "MPLUS1p-Medium", size: 16)!
         textField.attributedPlaceholder = NSAttributedString(
@@ -51,6 +52,7 @@ class RegistrationContentView: UIView {
     
     private let loginTextField: UITextField = {
         let textField = UITextField()
+        textField.text = "Kamal"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "MPLUS1p-Medium", size: 16)!
         textField.attributedPlaceholder = NSAttributedString(
@@ -66,6 +68,7 @@ class RegistrationContentView: UIView {
     
     private let passwordTextField: UITextField = {
         let textField = UITextField()
+        textField.text = "Kamalios123!"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "MPLUS1p-Medium", size: 16)!
         textField.isSecureTextEntry = true
@@ -131,6 +134,7 @@ class RegistrationContentView: UIView {
     
     private let repeatPasswordTextField: UITextField = {
         let textField = UITextField()
+        textField.text = "Kamalios123!"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "MPLUS1p-Medium", size: 16)!
         textField.isSecureTextEntry = true
@@ -308,7 +312,8 @@ class RegistrationContentView: UIView {
     }
     //TODO: Убрать force unwrap
     @objc func nextButtonTapped() {
-        delegate?.nextButtonTapped(mail: mailTextField.text!)
+        let user = UserCredentials(username: loginTextField.text!, email: mailTextField.text!, password: passwordTextField.text!)
+        delegate?.nextButtonTapped(user: user)
     }
     
 }
