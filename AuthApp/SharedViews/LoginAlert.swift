@@ -56,12 +56,10 @@ class NotificationBanner: UIView {
         ])
         
         view.layoutIfNeeded()
-        
-        // Анимация появления
+
         UIView.animate(withDuration: 0.5, animations: {
             self.transform = CGAffineTransform(translationX: 0, y: 50)
         }) { _ in
-            // Анимация исчезновения после задержки
             UIView.animate(withDuration: 0.5, delay: duration, options: [], animations: {
                 self.transform = CGAffineTransform(translationX: 0, y: -50)
             }) { _ in

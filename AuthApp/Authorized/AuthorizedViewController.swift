@@ -49,10 +49,13 @@ class AuthorizedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupView()
+        setupButtonsTarget()
+    }
+    
+    private func setupView(){
         view.backgroundColor = .white
         self.navigationItem.setHidesBackButton(true, animated: true)
-        setupButtonsTarget()
-
     }
     
     private func setupUI() {

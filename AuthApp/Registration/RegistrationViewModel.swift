@@ -14,12 +14,10 @@ protocol RegistrationViewModelProtocol {
 
 }
 
-
 class RegistrationViewModel: RegistrationViewModelProtocol {
     func getViewModelMailSendViewController(withMail: String) -> MailSendViewModelProtocol {
         MailSendViewModel(mail: withMail)
     }
-    
     
     func check(password: String) -> (passwordCheckLenthLabel: ValidState, passwordCheckRegistrLabel: ValidState, passwordCheckContainIntLabel: ValidState, passwordCheckContainSpecSymbolLabel: ValidState) {
         let CheckLenthPattern = "^.{8,15}$"
@@ -37,15 +35,11 @@ class RegistrationViewModel: RegistrationViewModelProtocol {
     
     private func checkRegex(text: String, pattern: String) -> ValidState {
         do {
-            // Создаем экземпляр NSRegularExpression с использованием шаблона
             let regex = try NSRegularExpression(pattern: pattern, options: [])
             
-            // Находим совпадения в строке
             let matches = regex.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
             
-            // Печатаем найденные совпадения
-            for match in matches {
-                let matchedString = (text as NSString).substring(with: match.range)
+            for _ in matches {
                 return .ok
             }
         } catch {
@@ -58,9 +52,9 @@ class RegistrationViewModel: RegistrationViewModelProtocol {
         NetworkLayer.shared.register(userCredentials: user ) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let authResponse):
+                case .success(_):
                     completion(true)
-                case .failure(let error):
+                case .failure(_):
                     completion(false)
                 }
             }

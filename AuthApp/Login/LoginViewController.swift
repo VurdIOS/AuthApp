@@ -34,8 +34,6 @@ class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     private func setupUI() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
@@ -67,19 +65,16 @@ class LoginViewController: UIViewController {
             if success {
                 let viewController = AuthorizedViewController()
                 self?.navigationController?.pushViewController(viewController, animated: true)
-            } else if let message = errorMessage {
+            } else if let _ = errorMessage {
                 // Показать сообщение об ошибке
                 self!.showBanner(withMessage: "Неверный логин или пароль")
             }
         }
     }
 
-    
-    
     @objc func signInButtonTapped() {
         let vc = RegistrationViewController(viewModel: viewModel.getViewModelToRegistrationView())
         navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 

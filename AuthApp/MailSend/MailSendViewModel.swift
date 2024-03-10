@@ -12,7 +12,6 @@ protocol MailSendViewModelProtocol {
     init(mail: String)
 }
 
-
 class MailSendViewModel: MailSendViewModelProtocol {
     var mail: String
     

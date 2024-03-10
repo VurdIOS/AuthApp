@@ -115,7 +115,6 @@ class LoginContentView: UIView {
         passwordTextField.isSecureTextEntry.toggle()
     }
     
-    
     private func setupUI() {
         addSubview(mainImage)
         addSubview(welcomeTitle)

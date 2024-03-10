@@ -14,7 +14,6 @@ protocol LoginViewModelProtocol {
     func loginButtonTapped(user: UserCredentials, completion: @escaping (Bool, String?) -> Void)
 }
 
-
 class LoginViewModel: LoginViewModelProtocol {
     var access = false
     var onLoginResult: ((Bool, String?) -> Void)?
@@ -27,7 +26,7 @@ class LoginViewModel: LoginViewModelProtocol {
         NetworkLayer.shared.authenticate(userCredentials: user) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let authResponse):
+                case .success(_):
                     self?.access = true
                     completion(true, nil)
                 case .failure(let error):

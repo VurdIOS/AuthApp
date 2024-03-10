@@ -310,11 +310,11 @@ class RegistrationContentView: UIView {
             delegate?.check(password: password)
         }
     }
+    
     //TODO: Убрать force unwrap
     @objc func nextButtonTapped() {
         let user = UserCredentials(username: loginTextField.text!, email: mailTextField.text!, password: passwordTextField.text!)
         delegate?.nextButtonTapped(user: user)
     }
-    
 }
 

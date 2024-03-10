@@ -12,17 +12,16 @@ class RegistrationViewController: UIViewController {
     
     var viewModel: RegistrationViewModelProtocol
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupButtonsTarget()
         contentView.delegate = self
     }
+    
     init(viewModel: RegistrationViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -34,7 +33,7 @@ class RegistrationViewController: UIViewController {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.addSubview(contentView)
-  
+        
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -43,23 +42,16 @@ class RegistrationViewController: UIViewController {
         ])
     }
     
-    private func setupButtonsTarget() {
-    }
-    
     private func showBanner(withMessage: String) {
         let banner = NotificationBanner()
         banner.show(in: contentView, withMessage: withMessage, duration: 1.0)
     }
-
-
-
 }
 
 
 extension RegistrationViewController: RegistrationContentViewDelegate {
     func check(password: String) {
         contentView.setupCheckValidLabels(withStates: viewModel.check(password: password))
-
     }
     
     func nextButtonTapped(user: UserCredentials) {
@@ -71,9 +63,5 @@ extension RegistrationViewController: RegistrationContentViewDelegate {
                 showBanner(withMessage: "Вы ввели не правильные данные или такой пользователь уже существует")
             }
         }
-        
     }
-    
-    
-    
 }

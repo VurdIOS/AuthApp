@@ -13,13 +13,11 @@ class MailSendViewController: UIViewController {
     
     let contentView = MailSendContentView(frame: .zero)
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupButtonsTarget()
         title = "Регистрация"
-        
     }
      
     init(viewModel: MailSendViewModelProtocol) {
