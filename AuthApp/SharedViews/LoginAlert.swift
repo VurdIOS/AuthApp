@@ -12,8 +12,8 @@ class NotificationBanner: UIView {
         let label = UILabel()
         label.textColor = .red
         label.textAlignment = .left
+        label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "Неверный логин или пароль"
         return label
     }()
     
@@ -44,8 +44,9 @@ class NotificationBanner: UIView {
         ])
     }
     
-    func show(in view: UIView, duration: TimeInterval) {
+    func show(in view: UIView, withMessage: String, duration: TimeInterval) {
         view.addSubview(self)
+        messageLabel.text = withMessage
         
         self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

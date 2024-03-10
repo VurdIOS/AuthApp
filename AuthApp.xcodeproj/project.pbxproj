@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A1198342B9DB716001E9550 /* AuthorizedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1198332B9DB716001E9550 /* AuthorizedViewController.swift */; };
 		3A17A6B32B90F71700C3D7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A6B22B90F71700C3D7A8 /* AppDelegate.swift */; };
 		3A17A6B52B90F71700C3D7A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A6B42B90F71700C3D7A8 /* SceneDelegate.swift */; };
 		3A17A6B72B90F71700C3D7A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A6B62B90F71700C3D7A8 /* LoginViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A1198332B9DB716001E9550 /* AuthorizedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedViewController.swift; sourceTree = "<group>"; };
 		3A17A6AF2B90F71700C3D7A8 /* AuthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A17A6B22B90F71700C3D7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A17A6B42B90F71700C3D7A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A1198322B9DB6F0001E9550 /* Authorized */ = {
+			isa = PBXGroup;
+			children = (
+				3A1198332B9DB716001E9550 /* AuthorizedViewController.swift */,
+			);
+			path = Authorized;
+			sourceTree = "<group>";
+		};
 		3A17A6A62B90F71700C3D7A8 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 		3A17A6B12B90F71700C3D7A8 /* AuthApp */ = {
 			isa = PBXGroup;
 			children = (
+				3A1198322B9DB6F0001E9550 /* Authorized */,
 				3AEB49E82B973271000D4B83 /* MailSend */,
 				3A86F0DD2B9381E800310C6E /* SharedViews */,
 				3A17A6CA2B90FAFB00C3D7A8 /* Login */,
@@ -295,6 +306,7 @@
 				3A54A7CA2B947E6B0053B275 /* RegistrationViewModel.swift in Sources */,
 				3A54A7C82B947E5C0053B275 /* RegistrationContentView.swift in Sources */,
 				3A86F0E72B939DE500310C6E /* NetworkLayer.swift in Sources */,
+				3A1198342B9DB716001E9550 /* AuthorizedViewController.swift in Sources */,
 				3AEB49EC2B973307000D4B83 /* MailSendViewModel.swift in Sources */,
 				3A17A6BD2B90F71700C3D7A8 /* AuthApp.xcdatamodeld in Sources */,
 			);

@@ -45,6 +45,11 @@ class RegistrationViewController: UIViewController {
     
     private func setupButtonsTarget() {
     }
+    
+    private func showBanner(withMessage: String) {
+        let banner = NotificationBanner()
+        banner.show(in: contentView, withMessage: withMessage, duration: 1.0)
+    }
 
 
 
@@ -58,11 +63,15 @@ extension RegistrationViewController: RegistrationContentViewDelegate {
     }
     
     func nextButtonTapped(user: UserCredentials) {
-        viewModel.nextButtonTapped(user: user) { result in
-            print("Не получилось зарегать")
+        viewModel.nextButtonTapped(user: user) { [unowned self] result in
+            if result {
+                let viewController = MailSendViewController(viewModel: self.viewModel.getViewModelMailSendViewController(withMail: user.email!))
+                self.navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                showBanner(withMessage: "Вы ввели не правильные данные или такой пользователь уже существует")
+            }
         }
-        let viewController = MailSendViewController(viewModel: viewModel.getViewModelMailSendViewController(withMail: user.email!))
-        navigationController?.pushViewController(viewController, animated: true)
+        
     }
     
     

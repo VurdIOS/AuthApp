@@ -53,9 +53,9 @@ class LoginViewController: UIViewController {
         contentView.loginButton.addTarget(nil, action: #selector(loginButtonTapped), for: .touchUpInside)
         contentView.signInButton.addTarget(nil, action: #selector(signInButtonTapped), for: .touchUpInside)
     }
-    private func showBanner() {
+    private func showBanner(withMessage: String) {
         let banner = NotificationBanner()
-        banner.show(in: contentView, duration: 1.0)
+        banner.show(in: contentView, withMessage: withMessage, duration: 1.0)
     }
     
     @objc func loginButtonTapped() {
@@ -65,10 +65,11 @@ class LoginViewController: UIViewController {
         
         viewModel.loginButtonTapped(user: userCredentials) { [weak self] success, errorMessage in
             if success {
-                print("перешли")
+                let viewController = AuthorizedViewController()
+                self?.navigationController?.pushViewController(viewController, animated: true)
             } else if let message = errorMessage {
                 // Показать сообщение об ошибке
-                self!.showBanner()
+                self!.showBanner(withMessage: "Неверный логин или пароль")
             }
         }
     }

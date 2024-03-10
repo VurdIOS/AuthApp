@@ -61,7 +61,6 @@ class RegistrationViewModel: RegistrationViewModelProtocol {
                 case .success(let authResponse):
                     completion(true)
                 case .failure(let error):
-                    print(error.localizedDescription)
                     completion(false)
                 }
             }
